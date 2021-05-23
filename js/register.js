@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#btn-login").click(function(){
+    $("#btn-register").click(function(){
         
         let username = $("#user").val().trim();
         let password = $("#pwd").val().trim();
@@ -7,16 +7,17 @@ $(document).ready(function(){
         console.log(username);
         if( username != "" && password != "" ){
             $.ajax({
-                url:'https://localhost:44328/api/Login',
+                url:'https://localhost:44328/api/Usuario',
                 type:'post',
                 data:JSON.stringify({username:username,password:password}),
                 contentType:"application/json; charset=utf-8",
                 success:function(response){
                     var msg = "";
                     if(response == 1){
-                        window.location = "pokedex.html";
+                        msg = "Register incorrecto";
                     }else{
-                        msg = "Login incorrecto";
+                        msg = "Registrado correctamente";
+                        window.location = "index.html";
                         alert(msg);
                     }
                     
